@@ -5,7 +5,7 @@
 
 data <- mtcars
 data$ID <- rownames(mtcars)[1:4]
-meta <- SIPMetaDF(data, "ID", rownames(mtcars)[1:4], colnames(mtcars)[1:4])
+meta <- SLURPMetaDF(data, "ID", rownames(mtcars)[1:4], colnames(mtcars)[1:4])
 
 testdf <-data.frame(matrix(ncol=4,nrow=100))
 colnames(testdf) <- colnames(meta[1:4])
@@ -13,7 +13,7 @@ for (i in 1:4) {
 testdf[i] <- HDRUniformGen(100)
 }
 
-ExportSIPLib(testdf, testxml.xml, average = TRUE, median = TRUE, meta = meta)
+SLURPExportXML(testdf, testxml.xml, average = TRUE, median = TRUE, meta = meta)
 
 #If you find any errors, please contact aaron@probabilitymanagement.org
 #Authors: Aaron Brown, Daniel O'Neil
